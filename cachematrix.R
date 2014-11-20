@@ -1,4 +1,4 @@
-## This file provides functions to optimize the computation of the inverse of square matrix by caching.
+## This file provides functions to optimize the computation of the inverse of a square matrix by caching.
 
 ## makeCacheMatrix creatas a special matrix object, that caches the inverse of the matrix
 
