@@ -1,6 +1,8 @@
 ## This file provides functions to optimize the computation of the inverse of a square matrix by caching.
 
-## makeCacheMatrix creatas a special matrix object, that caches the inverse of the matrix
+## makeCacheMatrix creates a special matrix object, that caches the inverse of the matrix
+## It returns a list of functions to handle the content of the object
+## There are get and set functions for the matrix itself and it's inverse.
 
 makeCacheMatrix <- function(x = matrix()) {
     s <- NULL
@@ -20,12 +22,15 @@ makeCacheMatrix <- function(x = matrix()) {
 cacheSolve <- function(x, ...) {
     ## Return a matrix that is the inverse of 'x'
     s <- x$getinv()
+    ## use cache if possible
     if(!is.null(s)) {
         message("getting cached data")
         return(s)
     }
     data <- x$get()
+    ## compute inverse
     s <- solve(data, ...)
+    ## cache it
     x$setinv(s)
     s
 }
